@@ -1,0 +1,13 @@
+Vendor/SDL/*
+**/bin/
+bin-int/
+bin/
+.vs/
+
+Makefile
+
+*.log
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcx*
