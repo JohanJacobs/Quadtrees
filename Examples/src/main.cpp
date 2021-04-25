@@ -9,7 +9,7 @@ int main()
 	uint32_t minY = 0, maxY = 1000;	
 	std::size_t point_count = 1000000;
 	
-	std::cout << "Creating point_region Quadtree\n";
+	std::cout << "Creating point_region Quad Tree\n";
 
 	QT::PointRegion pr(QT::AABB(minX, minY, maxX, maxY), 0, max_depth, points_before_split);		
 

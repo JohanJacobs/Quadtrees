@@ -8,15 +8,11 @@ namespace QT
 
 	void PointRegion::Insert(const Point& point)
 	{
-		if (!m_Bounds.Contains(point))
-		{
-			return;
-		}
-
 		if (IsLeaf())
 		{
+			/* if there is space in this layer, add the point */
 			if (m_Data.size() < m_SplitCount)
-				m_Data.push_back(point);// there is space in this layer, add the point		
+				m_Data.push_back(point); 
 			else
 			{
 				/* Capacity is full, create the quadrants*/
@@ -41,7 +37,7 @@ namespace QT
 				}
 				else
 				{
-					/* max depth reached so have to just add more data nodes */
+					/* max depth reached  */
 					m_Data.push_back(point);
 				}
 			}
@@ -92,7 +88,6 @@ namespace QT
 		{
 			for (auto& child : m_Children)
 				child.reset();
-
 		}
 	}
 
@@ -101,9 +96,9 @@ namespace QT
 	{
 		uint16_t midX = bounds.GetLeft() + bounds.GetWidth() / 2;
 		uint16_t midY = bounds.GetTop() + bounds.GetHeight() / 2;
-		if (point.y < midY)
-		{
-			// north
+
+		if (point.y < midY) // north
+		{			
 			if (point.x >= midX)
 			{
 				return QuadSections::NorthEast;// east			
@@ -113,16 +108,15 @@ namespace QT
 				return QuadSections::NorthWest;//west 
 			}
 		}
-		else if (point.y >= midY)
-		{
-			//south
+		else if (point.y >= midY) //south
+		{			
 			if (point.x >= midX)
 			{
-				return QuadSections::SouthEast;// east
+				return QuadSections::SouthEast; //east
 			}
 			else if (point.x < midX)
 			{
-				return QuadSections::SouthWest;//west 
+				return QuadSections::SouthWest; //west 
 			}
 		}
 		return QuadSections::Invalid;
@@ -146,7 +140,6 @@ namespace QT
 		m_Children[std::size_t(QuadSections::NorthWest)] = std::move(std::make_unique<PointRegion>(NorthWestRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
 		m_Children[std::size_t(QuadSections::SouthEast)] = std::move(std::make_unique<PointRegion>(SouthEastRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
 		m_Children[std::size_t(QuadSections::SouthWest)] = std::move(std::make_unique<PointRegion>(SouthWestRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
-
 	}
 
 	/* determine if this node is a leaf*/
