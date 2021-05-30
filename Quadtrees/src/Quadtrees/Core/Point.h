@@ -9,5 +9,7 @@ namespace QT
 		Point(uint32_t X, uint32_t Y);
 
 		Point(const Point& other);
+		Point() = default;
+
 	};
 }
