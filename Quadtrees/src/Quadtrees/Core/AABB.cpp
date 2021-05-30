@@ -1,7 +1,6 @@
 #include "AABB.h"
 namespace QT
 {
-
 	bool AABB::Contains(const Point& point) const
 	{
 		if ((point.x < minX) || (point.x >= maxX))

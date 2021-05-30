@@ -16,16 +16,12 @@ project "Examples"
     
     includedirs 
     {
-        includeDirs["Quadtrees"],
-        includeDirs["Utils"],
-        includeDirs["spdlog"],
-        includeDirs["effolkronium"]
+        includeDirs["Quadtrees"]
     }
     
     links 
     {
-        "Quadtrees",
-        "Utils"
+        "Quadtrees"
     }
     
     filter "system:windows"

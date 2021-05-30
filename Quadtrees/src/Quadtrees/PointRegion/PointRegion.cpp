@@ -17,8 +17,7 @@ namespace QT
 			{
 				/* Capacity is full, create the quadrants*/
 				if (m_CurrentDepth < m_MaxDepth)
-				{
-					/* can split it in smaller segments*/
+				{					
 					CreateSubDivisions(m_Bounds);
 
 					// add the data points 			
@@ -136,7 +135,6 @@ namespace QT
 
 		//create the regions
 		m_Children[std::size_t(QuadSections::NorthEast)] = std::move(std::make_unique<PointRegion>(NorthEastRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
-
 		m_Children[std::size_t(QuadSections::NorthWest)] = std::move(std::make_unique<PointRegion>(NorthWestRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
 		m_Children[std::size_t(QuadSections::SouthEast)] = std::move(std::make_unique<PointRegion>(SouthEastRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
 		m_Children[std::size_t(QuadSections::SouthWest)] = std::move(std::make_unique<PointRegion>(SouthWestRect, m_CurrentDepth + 1, m_MaxDepth, m_SplitCount));
